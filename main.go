@@ -61,7 +61,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Container logs:\n%s", string(val))
+	log.Printf("Container logs:\n%s", val)
 
 	err = container.Terminate(ctx)
 	if err != nil {
