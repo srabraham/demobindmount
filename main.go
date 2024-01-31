@@ -15,12 +15,12 @@ import (
 // This program works as expected at testcontainers 0.26.0, but doesn't work at 0.27.0
 // You can switch between the two by doing
 //
-//		go get github.com/testcontainers/testcontainers-go@v0.26.0
-//		go get github.com/testcontainers/testcontainers-go@v0.27.0
+//	go get github.com/testcontainers/testcontainers-go@v0.26.0
+//	go get github.com/testcontainers/testcontainers-go@v0.27.0
 //
-//	 then run the program with
+// then run the program with
 //
-//	    go run main.go
+//	go run main.go
 func main() {
 	ctx := context.Background()
 
