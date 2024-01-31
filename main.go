@@ -10,6 +10,12 @@ import (
 	"path/filepath"
 )
 
+func fate(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
 // This is a demo for my comment here: https://github.com/testcontainers/testcontainers-go/issues/2163#issuecomment-1917702951
 //
 // This program works as expected at testcontainers 0.26.0, but doesn't work at 0.27.0
@@ -27,9 +33,7 @@ func main() {
 	// this assumes that the working dir is the same as where the go program lives,
 	// so it'll work if you `go run main.go`
 	pwd, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
+	fate(err)
 	// mount this local file into containerDir
 	mountFile := filepath.Join(pwd, "mounts", "somefile.txt")
 	containerDir := "/my/container/dir/"
@@ -50,21 +54,12 @@ func main() {
 		Started: true,
 	}
 	container, err := testcontainers.GenericContainer(ctx, req)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fate(err)
 	logs, err := container.Logs(ctx)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fate(err)
 	val, err := io.ReadAll(logs)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fate(err)
 	log.Printf("Container logs:\n%s", val)
 
-	err = container.Terminate(ctx)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fate(container.Terminate(ctx))
 }
