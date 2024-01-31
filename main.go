@@ -16,15 +16,16 @@ func fate(err error) {
 	}
 }
 
-// This is a demo for my comment here: https://github.com/testcontainers/testcontainers-go/issues/2163#issuecomment-1917702951
+// This is a demo for this bug: https://github.com/testcontainers/testcontainers-go/issues/2179
 //
-// This program works as expected at testcontainers 0.26.0, but doesn't work at 0.27.0
-// You can switch between the two by doing
+// This program bind-mounts a single file into a simple alpine container, then starts the container
+// and has it check for the file's existence. This all works correctly at testcontainers v0.26.0,
+// but it doesn't work at v0.27.0. You can switch between the two by doing
 //
 //	go get github.com/testcontainers/testcontainers-go@v0.26.0
 //	go get github.com/testcontainers/testcontainers-go@v0.27.0
 //
-// then run the program with
+// then running the program with
 //
 //	go run main.go
 func main() {
